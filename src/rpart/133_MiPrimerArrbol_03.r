@@ -9,7 +9,7 @@ require("data.table")
 require("rpart")
 require("rpart.plot")
 
-setwd("M:\\")  #Establezco el Working Directory
+setwd("C:/Users/facun/Documents/ITBA/Cursadas/03 - Data Mining")   #Establezco el Working Directory
 
 #cargo los datos
 dataset <- fread("./datasetsOri/paquete_premium_202011.csv")
