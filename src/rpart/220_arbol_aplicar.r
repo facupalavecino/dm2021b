@@ -6,13 +6,13 @@ require("data.table")
 require("rpart")
 
 #Aqui se debe poner la carpeta de la computadora local
-setwd("M:\\")  #Establezco el Working Directory
+setwd("C:/Users/facun/Documents/ITBA/Cursadas/03 - Data Mining")  #Establezco el Working Directory
 
 #cargo los datos donde entreno
 dtrain  <- fread("./datasetsOri/paquete_premium_202011.csv")
 
 #cargar aqui los parametros
-parametros  <-  list( "cp"=-1, "minsplit"=750,  "minbucket"=375, "maxdepth"=5 )
+parametros  <-  list( "cp"=0, "minsplit"=15,  "minbucket"=5, "maxdepth"=10 )
 
 modelo  <- rpart("clase_ternaria ~ .",
                  data= dtrain,

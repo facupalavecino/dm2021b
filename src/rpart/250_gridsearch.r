@@ -9,9 +9,9 @@ require("rlist")
 require("parallel")
 require("rpart")
 
-setwd( "M:\\" )
+setwd("C:/Users/facun/Documents/ITBA/Cursadas/03 - Data Mining")
 
-ksemillas  <- c(102191, 200177, 410551, 552581, 892237) #reemplazar por las propias semillas
+ksemillas  <- c(270037, 169019, 764003, 804043, 904019) #reemplazar por las propias semillas
 
 #------------------------------------------------------------------------------
 
@@ -86,6 +86,51 @@ ArbolesCrossValidation  <- function( data, param, qfolds, semilla )
 #cargo los datos donde voy a ENTRENAR el modelo
 dataset  <- fread("./datasetsOri/paquete_premium_202011.csv")
 
+param_basicos1 <- list( "cp"= -1, 
+                        
+                        "minsplit"= 200,
+                        
+                        "minbucket"= 100,
+                        
+                        "maxdepth"= 6 )
+
+
+
+gan1 <- ArbolesCrossValidation( dataset,
+                                
+                                param_basicos1,
+                                
+                                qfolds= 5, # 5-fold cross validation
+                                
+                                17 )  
+
+
+
+
+
+param_basicos2 <- list( "cp"= -1, 
+                        
+                        "minsplit"= 50,
+                        
+                        "minbucket"= 10,
+                        
+                        "maxdepth"= 6 )
+
+
+
+gan2 <- ArbolesCrossValidation( dataset,
+                                
+                                param_basicos2,
+                                
+                                qfolds= 5, # 5-fold cross validation
+                                
+                                11 )  
+
+
+
+gan1
+
+gan2
 
 for( vcp in c( -1, 0) ) 
 for( vmaxdepth in  c(4,5,6,7,8,10,12,14,16) )

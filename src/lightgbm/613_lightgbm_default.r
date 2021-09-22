@@ -11,7 +11,7 @@ gc()             #garbage collection
 require("data.table")
 require("lightgbm")
 
-setwd("~/buckets/b1/")
+setwd("C:/Users/facun/Documents/ITBA/Cursadas/03 - Data Mining/")
 
 #cargo el dataset donde voy a entrenar
 dataset  <- fread("./datasetsOri/paquete_premium_202011.csv")
@@ -45,9 +45,9 @@ prediccion  <- predict( modelo,
 
 #Genero la entrega para Kaggle
 entrega  <- as.data.table( list( "numero_de_cliente"= dapply[  , numero_de_cliente],
-                                 "Predicted"= prediccion > 0.025)  ) #genero la salida
+                                 "Predicted"= prediccion > 0.015)  ) #genero la salida
 
 #genero el archivo para Kaggle
 fwrite( entrega, 
-        file= "./kaggle/lightgbm_613.csv", 
+        file= "./kaggle/lightgbm_613_015.csv", 
         sep= "," )

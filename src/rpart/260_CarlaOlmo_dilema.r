@@ -7,11 +7,11 @@ require("parallel")
 require("rpart")
 
 #setwd( "M:\\" )
-setwd( "~/buckets/b1/crudo/" )
+setwd( "C:/Users/facun/Documents/ITBA/Cursadas/03 - Data Mining/" )
 
 #Aqui van VEINTE semillas
-ksemillas  <- c(142297, 191507, 198839, 258707, 268091, 287047, 330557, 386333, 490619, 497239,
-                513319, 571019, 589187, 649141, 671651, 711811, 814937, 830923, 884069, 957041 )
+ksemillas  <- c(122021, 122027, 122029, 122033, 122039, 122041, 122051, 122053, 122069, 122081, 
+                122099, 122117, 122131, 122147, 122149, 122167, 122173, 122201, 122203, 122207)
 
 #------------------------------------------------------------------------------
 
@@ -64,7 +64,7 @@ ArbolesMontecarlo  <- function( data, param, semillas )
                           semillas, 
                           MoreArgs= list( data, param), 
                           SIMPLIFY= FALSE,
-                          mc.cores= 5 )  #debe ser 1 si se tiene Windows
+                          mc.cores= 1 )  #debe ser 1 si se tiene Windows
 
   #devuelvo la primer ganancia y el promedio
   return( mean( unlist( ganancias ))  ) 

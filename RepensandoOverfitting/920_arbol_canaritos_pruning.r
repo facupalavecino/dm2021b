@@ -7,7 +7,7 @@ library("rpart")
 library("rpart.plot")
 
 
-setwd("M:\\" )  #establezco la carpeta donde voy a trabajar
+setwd("C:/Users/facun/Documents/ITBA/Cursadas/03 - Data Mining" )  #establezco la carpeta donde voy a trabajar
 
 
 #cargo el dataset
