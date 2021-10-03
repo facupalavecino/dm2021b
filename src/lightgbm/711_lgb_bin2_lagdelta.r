@@ -63,9 +63,35 @@ hs <- makeParamSet(
          makeNumericParam("prob_corte",       lower=    0.040, upper=    0.055)
         )
 
-campos_malos  <- c( "mpasivos_margen" )   #aqui se deben cargar todos los campos culpables del Data Drifting
+campos_malos  <- c(
+  "mpasivos_margen",
+  "mrentabilidad",
+  "mrentabilidad_annual",
+  "mcomisiones",
+  "mactivos_margen",
+  "mpasivos_margen",
+  "mcheques_depositados",
+  "ccheques_emitidos",
+  "mcheques_emitidos",
+  "ccheques_depositados_rechazados",
+  "mcheques_depositados_rechazados",
+  "ccheques_emitidos_rechazados",
+  "mcheques_emitidos_rechazados",
+  "Master_madelantopesos",
+  "Master_madelantodolares",
+  "Master_mpagado",
+  "Master_mpagospesos",
+  "Master_mpagosdolares",
+  "Visa_mconsumospesos",
+  "Visa_mconsumosdolares",
+  "Visa_mlimitecompra",
+  "Visa_madelantopesos",
+  "Visa_madelantodolares",
+  "Visa_mconsumototal",
+  "Visa_mpagominimo"
+)   #aqui se deben cargar todos los campos culpables del Data Drifting
 
-ksemilla_azar  <- 102191  #Aqui poner la propia semilla
+ksemilla_azar  <- 804043  #Aqui poner la propia semilla
 #------------------------------------------------------------------------------
 #Funcion que lleva el registro de los experimentos
 
@@ -264,6 +290,18 @@ if( kcanaritos > 0 )
 {
   for( i  in 1:kcanaritos)  dataset[ , paste0("canarito", i ) :=  runif( nrow(dataset))]
 }
+
+# Features creadas por mi
+dtrain[, active_quarter := ifelse(active_quarter == 1, "YES", "NO")]
+dtrain[, cliente_vip := ifelse(cliente_vip == 1, "YES", "NO")]
+dtrain[, tcallcenter := ifelse(tcallcenter == 1, "YES", "NO")]
+dtrain[, tmobile_app := ifelse(tmobile_app == 1, "YES", "NO")]
+dtrain[, internet := ifelse(internet == 0, "A", ifelse(internet == 1, "B", ifelse(internet == 2, "C", ifelse(internet == 3, "D", "E"))))]
+dtrain[, cliente_antiguedad_years := ceiling(cliente_antiguedad / 12)]
+
+# Intuición: si el cliente tiene gastos GRANDES (mucho monto para pocas transacciones) seguramente tenga cuotas y permanezca en el banco
+dtrain[, tarjeta_visa_transaccion_promedio := mtarjeta_visa_consumo / ctarjeta_visa_transacciones]
+dtrain[, tarjeta_master_transaccion_promedio := mtarjeta_master_consumo / ctarjeta_master_transacciones]
 
 
 #cargo los datos donde voy a aplicar el modelo
