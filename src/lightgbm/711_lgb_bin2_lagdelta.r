@@ -63,33 +63,21 @@ hs <- makeParamSet(
          makeNumericParam("prob_corte",       lower=    0.040, upper=    0.055)
         )
 
+# Estas variables se van porque son 60% o más de NAs, muy dificil computar algo
 campos_malos  <- c(
-  "mpasivos_margen",
-  "mrentabilidad",
-  "mrentabilidad_annual",
-  "mcomisiones",
-  "mactivos_margen",
-  "mpasivos_margen",
-  "mcheques_depositados",
-  "ccheques_emitidos",
-  "mcheques_emitidos",
-  "ccheques_depositados_rechazados",
-  "mcheques_depositados_rechazados",
-  "ccheques_emitidos_rechazados",
-  "mcheques_emitidos_rechazados",
+  "Master_Finiciomora",
+  "Visa_Finiciomora",
+  "tarjeta_master_transaccion_promedio",
+  "Master_mconsumospesos",
   "Master_madelantopesos",
+  "Master_cadelantosefectivo",
+  "Master_mconsumosdolares",
   "Master_madelantodolares",
-  "Master_mpagado",
   "Master_mpagospesos",
+  "Master_mconsumototal",
   "Master_mpagosdolares",
-  "Visa_mconsumospesos",
-  "Visa_mconsumosdolares",
-  "Visa_mlimitecompra",
-  "Visa_madelantopesos",
-  "Visa_madelantodolares",
-  "Visa_mconsumototal",
-  "Visa_mpagominimo"
-)   #aqui se deben cargar todos los campos culpables del Data Drifting
+  "Master_cconsumos"
+)
 
 ksemilla_azar  <- 804043  #Aqui poner la propia semilla
 #------------------------------------------------------------------------------

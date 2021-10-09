@@ -11,7 +11,7 @@ require("data.table")
 
 
 #Aqui comienza el programa
-setwd("~/buckets/b1")
+setwd("C:/Users/facun/Documents/ITBA/Cursadas/03 - Data Mining")
 
 #cargo el dataset donde voy a entrenar
 dataset  <- fread("./datasetsOri/paquete_premium.csv.gz")
